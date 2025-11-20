@@ -87,6 +87,17 @@ public class Repositorio_tareas {
 	    this.tareas.add(t);
 	    guardarTareas(); // Guarda en el txt
 	}
+
+	public void actualizar_estado_tarea(String id_tarea_elegida, String estado) throws IOException {
+		for(Tarea t: tareas) { 
+			if(t.getId().equals(id_tarea_elegida)) { //encuentra la tarea que elegimos en la lista global 
+				t.setEstado(estado);
+				this.guardarTareas(); //actualizamos el tareas.txt con el estado actual
+				break; //ya encontramos la tarea asi que simplemente paramos el ciclo
+			}
+		}
+		
+	}
 	
 	}
 	

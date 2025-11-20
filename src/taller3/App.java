@@ -1,6 +1,7 @@
 package taller3;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
@@ -16,7 +17,7 @@ public class App {
 			String nombre = s.nextLine();
 			System.out.println("Ingresar password del usuario: ");
 			String password = s.nextLine();
-			sistema.usuario_logear(nombre, password);
+			sistema.usuario_logear(nombre, password); //verifica si el nombre y password son correctas y cambia el atributo usuario_actual
 
 		} while (sistema.getUsuario_actual() == null);
 
@@ -38,7 +39,7 @@ public class App {
 				
 				do { 
 					sistema.menu(2);
-					System.out.println("6. Volver al menú principal"); // Necesario para salir del bucle
+					System.out.println("6. Volver al menú principal"); 
 					opcion_admin = s.nextInt();
 					switch (opcion_admin) {
 					case 1: //Ver proyectos y tareas
@@ -165,6 +166,52 @@ public class App {
 			
 			case 2: //========Menu usuario=======
 				
+				int opcion_usuario = 0;
+				
+				do {
+					sistema.menu(3);
+					System.out.println("5.Volver al menu principal");
+					opcion_usuario = s.nextInt();
+					switch(opcion_usuario) {
+					case 1:
+						sistema.imprimir_proyectos();
+						break;
+					case 2:
+						sistema.mostrar_tareas_delusuario();                                //se que seria mas facil llamar la lista tareas_usuario al 
+						break;                                                              //principio despues del proceso de login, pero asi es mas seguro
+					case 3:                                                                 //debido a los cambios que sufre la lista de tareas "global"
+						ArrayList<Tarea> tareas_usuario = sistema.conseguir_tareas_delusuario(); 
+						int indice=1;
+						for(Tarea t: tareas_usuario) {
+							System.out.println(indice+". "+t);
+							indice++;
+							
+						}
+						System.out.println("Elija la tarea a la que le quiere cambiar el estado: ");
+						int tarea_elegida = s.nextInt();
+						if(tarea_elegida<1 || tarea_elegida>tareas_usuario.size()) {
+							System.out.println("Opcion invalida!!");
+							break;
+						}
+						
+						
+						
+						System.out.println("1.Completada\n2.En progreso\n3.Pendiente");
+						System.out.println("Seleccione el estado actual: ");
+						int estado_actual = s.nextInt();
+						String id_tarea_elegida = tareas_usuario.get(tarea_elegida-1).getId(); //tomamos el id para despues encontrar la tarea en la lista global
+						
+					
+						sistema.cambiar_estado_tarea(estado_actual, id_tarea_elegida, tareas_usuario);
+						
+						
+						break;
+							
+					
+					}
+					
+					
+				} while(opcion_usuario!=5);
 
 			case 3:
 				// Salir

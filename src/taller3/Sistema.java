@@ -17,7 +17,7 @@ public class Sistema {
 	
 	private Sistema() throws FileNotFoundException {
 		 repositorio = Repositorio_proyectos.getInstancia();
-		 repositorio_t = Repositorio_tareas.getInstancia();
+		 repositorio_t = Repositorio_tareas.getInstancia(); //repositorio_tareas
 		 this.estrategia=null;
 	}
 
@@ -308,4 +308,65 @@ public void generarreporte() {
 	
 	
 }
+
+
+
+public void cambiar_estado_tarea(int estado_actual, String id_tarea_elegida, ArrayList<Tarea> tareas_usuario) throws IOException {
+	//elige el estado segun el numero que se haya ingresado
+	String estado="";
+	switch(estado_actual) {
+	case 1:
+		estado="Completada";
+		break;
+	case 2:
+		estado= "En progreso";
+		break;
+	case 3:
+		estado = "Pendiente";
+		break;
+	default:
+		System.out.println("Ingresar una de las 3 opciones por favor!!");
+		break;
+	}
+	
+
+	repositorio_t.actualizar_estado_tarea(id_tarea_elegida,estado);  
+		
+	System.out.println("Estado de la tarea cambiado con exito!!");
+	
+	}
+
+	
+		
+
+public ArrayList<Tarea> conseguir_tareas_delusuario() {
+	ArrayList<Tarea> tareas_usuario = new ArrayList<>();
+
+	for(Tarea t: repositorio_t.getTareas()) {
+		if(usuario_actual.getUsername().equals(t.getResponsable())) {
+			tareas_usuario.add(t);
+		}
+	}
+
+	return tareas_usuario;		
+	
+	
 }
+
+
+
+public void mostrar_tareas_delusuario() {
+	ArrayList<Tarea> tareas = conseguir_tareas_delusuario();
+	if(tareas.size()==0) {
+		System.out.println("Sin tareas asignadas!!");
+		
+	}
+	for(Tarea t : tareas) {
+		System.out.println(t);
+	}
+	
+}
+
+}
+
+

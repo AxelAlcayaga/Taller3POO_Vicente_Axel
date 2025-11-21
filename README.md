@@ -13,8 +13,7 @@ La empresa TaskForge Ltda. ha solicitado el desarrollo de una herramienta de ges
 2. Abrir la clase: `src/logica/Main.java`.  
 3. Ejecutar `Run Main`.
 
-## Diagramas
-![Diagrama de clases](Modelo%20de%20dominio/Diagrama.png)
+
 
 ## Compilar en consola
 mkdir -p bin

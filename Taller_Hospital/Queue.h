@@ -1,5 +1,5 @@
 #include "Nodo.h"
-
+#pragma once 
 
 
 class Queue{

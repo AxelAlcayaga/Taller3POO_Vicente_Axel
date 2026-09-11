@@ -21,5 +21,5 @@ string Paciente::getServicio(){
 }
 
 void Paciente::mostrar_info(){
-	cout<<id<<"::"<<getNombre()<<"::"<<getEdad()<<"::"<<getServicio()<<endl;
+	cout<<"ID= "<<id<<"||"<<"NOMBRE= "<<getNombre()<<"||"<<"EDAD= "<<getEdad()<<"||"<<"SERVICIO= "<<getServicio()<<endl;
 }

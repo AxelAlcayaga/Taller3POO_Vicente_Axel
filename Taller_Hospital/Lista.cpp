@@ -62,3 +62,8 @@ void Lista::mostrar(){
 Lista* Lista::getNext(){
 	return siguiente;
 }
+
+void Lista::setSiguiente(Lista* l){
+	siguiente = l;
+
+}

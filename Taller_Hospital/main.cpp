@@ -109,7 +109,9 @@ int main(int argc, char** argv) {
             cout<<"Falta la funcion atender"<<endl;
             break;
 
-            case 2:
+            case 2: {
+				
+			
 
             cout<<"=== DEPARTAMENTOS/SERVICIOS ==="<<endl;
             cout<<endl;
@@ -127,6 +129,7 @@ int main(int argc, char** argv) {
             servicio_elegido->mostrar();
             
             break;
+			}
 
             case 3:
 

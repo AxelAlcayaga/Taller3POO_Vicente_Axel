@@ -26,7 +26,7 @@ Hospital::Hospital(){
 Lista* Hospital::getServicio(int s){
 
     Lista* cursor = urgencias;
-    for(int i = 1; i<s+1; i++){
+    for(int i = 1; i<s-1; i++){
         cursor=cursor->getNext();
     }
     return cursor;

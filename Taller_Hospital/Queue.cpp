@@ -83,8 +83,8 @@ Queue::~Queue(){
 		}
 		
 		
-		delete borrar;   //no borra a los pacientes, de eso se encargara la clase lista. Esto para hacer que no haya un doble borrado
-		                 //en el caso de que se haga delete queue y luego delete stack
+		delete borrar->getPaciente();
+		delete borrar;   
 		
 	}
 }

@@ -1,5 +1,5 @@
 #include "Queue.h"
-
+#include <iostream>
 
 
 Queue::Queue(){
@@ -87,4 +87,20 @@ Queue::~Queue(){
 		                 //en el caso de que se haga delete queue y luego delete stack
 		
 	}
+}
+
+void Queue::mostrar_espera(){
+	if(head==nullptr){
+		cout<<"Sin pacientes en espera"<<endl;
+		return;
+	}
+	Nodo* cursor = head;
+	int contador = 1;
+	while(cursor!=nullptr){
+		Paciente* p = cursor->getPaciente();
+		cout<<contador<<"."<<" "<<p->getId()<<" - "<<p->getNombre()<<endl;
+		cursor=cursor->getSiguiente(); 
+		contador++;
+	}
+
 }

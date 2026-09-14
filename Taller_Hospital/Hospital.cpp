@@ -26,7 +26,7 @@ Hospital::Hospital(){
 Lista* Hospital::getServicio(int s){
 
     Lista* cursor = urgencias;
-    for(int i = 1; i<s-1; i++){
+    for(int i = 0; i<s-1; i++){
         cursor=cursor->getNext();
     }
     return cursor;
@@ -52,4 +52,18 @@ void Hospital::mostrar_servicios(){
     }
 
     
+}
+
+void Hospital::ingresar_paciente(Paciente* p){
+    Lista* cursor = urgencias;
+
+    while(cursor!=nullptr){
+        if(p->getServicio()==cursor->getServicio()){
+            cursor->insertar(p);
+            break;
+        }
+        cursor=cursor->getNext();
+    }
+    cout<<"ERROR SERVICIO DE PACIENTE NO ENCONTRADO, VERIFICAR SI ESTA ESCRITO CORRECTAMENTE Y SACAR DE HISTORIAL"<<endl;
+
 }

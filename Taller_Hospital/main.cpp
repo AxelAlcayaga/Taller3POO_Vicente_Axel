@@ -106,10 +106,37 @@ int main(int argc, char** argv) {
 
         switch(opcion){
 
-            case 1:
-            cout<<"Falta la funcion atender"<<endl;
+            case 1:{
+            cout<<"=== Pacientes en espera ==="<<endl;
+            cola->mostrar_espera();
+            cout<<endl;
+            int cantidad_atencion = 0;
+            cout<<"Indique la cantidad de pacientes a atender: ";
+            cin>>cantidad_atencion;
+            cout<<endl;
+            cout<<"=== ATENDIENDO PACIENTES ==="<<endl;
+            for(int i = 0; i<cantidad_atencion;i++){
+                Nodo* p = cola->front();//tomamos el nodo en el que se encuentra el paciente
+                cola->pop(); //lo retiramos de la cola
+                historial->push(p); //ingresamos el nodo completo al historial junto con el paciente obvio
+                hospital->ingresar_paciente(p->getPaciente()); //ingresamos al paciente y no al nodo, esto para que no este el mismo nodo
+                                                               //en dos diferentes listas de nodos. 
+                cout<<"ID: "<<p->getPaciente()->getId()<<endl;
+                cout<<"Nombre: "<<p->getPaciente()->getNombre()<<endl;
+                cout<<"Edad: "<<p->getPaciente()->getEdad()<<endl;
+                cout<<"Servicio: "<<p->getPaciente()->getServicio()<<endl;
+                cout<<endl;
+                cout<<"Paciente enviado a "<<p->getPaciente()->getServicio()<<endl;
+                cout<<"============================================"<<endl;
+
+            }
+
+
+
+            
             break;
 
+        }
             case 2: {
 				
 			
@@ -136,6 +163,10 @@ int main(int argc, char** argv) {
 
             cout<<"== HISTORIAL DE ÚLTIMAS ATENCIONES DEL HOSPITAL =="<<endl;
             cout<<endl;
+            if(historial->empty()){
+                cout<<"<< Todavía no se atiende a ningun paciente >>"<<endl;
+                break;
+            }
             historial->mostrar_historial();
             cout<<endl;
             

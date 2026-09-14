@@ -17,7 +17,7 @@ class Stack{
 		
 		void pop();
 		
-		void push(Paciente* pac);
+		void push(Nodo* n);
 		
 		bool empty();
 

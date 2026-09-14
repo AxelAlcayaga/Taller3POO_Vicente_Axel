@@ -23,6 +23,8 @@ class Queue{
 		void push(Nodo* n);
 		
 		bool empty();
+
+		void mostrar_espera();
 		
 		
 		

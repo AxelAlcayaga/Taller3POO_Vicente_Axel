@@ -25,8 +25,8 @@ Nodo* Stack:: Top(){
 	return top;
 }
 
-void Stack:: push(Paciente* pac){  
-	Nodo* n = new Nodo(pac);
+void Stack:: push(Nodo* n){  
+	
 	n->setSiguiente(top);
 	top=n;
 }
